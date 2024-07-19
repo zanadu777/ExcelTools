@@ -1,0 +1,60 @@
+﻿<Window x:Class="ExcelTools.Wpf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ExcelTools.Wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+  <Window.DataContext >
+    <local:MainWindowVm/>
+  </Window.DataContext>
+  <Grid>
+    <Grid.Resources>
+      <Style TargetType="TextBlock">
+        <Setter Property="Height" Value="23" />
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="VerticalAlignment"  Value="Center"/>
+      </Style>
+
+      <Style TargetType="TextBox">
+        <Setter Property="Height" Value="23" />
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="VerticalAlignment"  Value="Center"/>
+      </Style>
+
+      <Style TargetType="Button">
+        <Setter Property="Height" Value="23" />
+        <Setter Property="Margin" Value="3"/>
+        <Setter Property="VerticalAlignment"  Value="Center"/>
+      </Style>
+
+    </Grid.Resources>
+    <Grid.RowDefinitions >
+      <RowDefinition Height="30"/>
+      <RowDefinition Height="30"/>
+      <RowDefinition Height="30"/>
+      <RowDefinition Height="30"/>
+      <RowDefinition />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition  Width="200"/>
+      <ColumnDefinition  Width="*"/>
+      <ColumnDefinition  Width="100"/>
+    </Grid.ColumnDefinitions>
+
+    <TextBlock Text="Excel Sheet 1"/>
+    <TextBox Grid.Column="1" Text="{Binding Excel1Path}" />
+
+
+    <TextBlock Grid.Row="1" Grid.Column="0" Text="Excel Sheet 2"/>
+    <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Excel2Path}"/>
+
+    <TextBlock Grid.Row="2" Grid.Column="0" Text="Output Sheet 2"/>
+    <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ExcelCombinedPath}"/>
+
+    <Button Grid.Row="3" Grid.Column="2" Content="Combine"  Command="{Binding CombineCommand}"/>
+           
+
+  </Grid>
+</Window>
