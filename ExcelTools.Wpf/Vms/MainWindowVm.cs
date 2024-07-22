@@ -1,47 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using AddIn.Core.Helpers;
 using ExcelTools.Core.Extensions;
+using ExcelTools.Wpf.Controls;
+using ExcelTools.Wpf.Helpers;
 using ExcelTools.Wpf.Wpf;
 using Newtonsoft.Json;
 
-namespace ExcelTools.Wpf
+namespace ExcelTools.Wpf.Vms
 {
     public class MainWindowVm: INotifyPropertyChanged
     {
       public event PropertyChangedEventHandler? PropertyChanged;
 
-      [JsonIgnore]
-      public ICommand CombineCommand { get; set; }
-
-      public string Excel1Path { get; set; }
-      public string Excel2Path { get; set; }
-
-      public string ExcelCombinedPath { get; set; }
-
-
-
+      public ObservableCollection<Tool> Tools { get; set; } = new();
 
     public MainWindowVm()
+    {
+      Tools.Add(new Tool
       {
-        CombineCommand = new DelegateCommand(OnCombine);
-      }
+        Name = "Combine Two Worksheets",
+        ControlGenerator = ()=> new CombineTwoWorksheets()
+      });
 
-      private void OnCombine(object obj)
+      Tools.Add(new Tool
       {
-        var workbook1 = new FileInfo(Excel1Path).ToXLWorkbook();
-        var workbook2 = new FileInfo(Excel2Path).ToXLWorkbook();
-        workbook1.Append(workbook2);
-        workbook1.SaveAs(ExcelCombinedPath);
-      IsolatedStorageHelper.SerializeJson(this, "MainWindowVm");
-      }
+        Name = "Get Tab Data",
+        ControlGenerator = () => new GetTabData()
+      });
+
+    }
+
+
 
       protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
       {

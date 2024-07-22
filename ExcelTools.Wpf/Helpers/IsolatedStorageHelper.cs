@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json;
-using System.IO;
+﻿using System.IO;
 using System.IO.IsolatedStorage;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
+
 //using MessagePack;
 
-namespace AddIn.Core.Helpers
+namespace ExcelTools.Wpf.Helpers
 {
   public static class IsolatedStorageHelper
   {
