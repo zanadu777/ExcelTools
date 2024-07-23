@@ -15,18 +15,17 @@ using System.Windows.Shapes;
 using ExcelTools.Wpf.Helpers;
 using ExcelTools.Wpf.Vms;
 
-namespace ExcelTools.Wpf.Controls
+namespace ExcelTools.Wpf.Controls;
+
+/// <summary>
+/// Interaction logic for GetTabData.xaml
+/// </summary>
+public partial class GetTabData : UserControl
 {
-    /// <summary>
-    /// Interaction logic for GetTabData.xaml
-    /// </summary>
-    public partial class GetTabData : UserControl
-    {
-        public GetTabData()
-        {
-            InitializeComponent();
-            var vm = IsolatedStorageHelper.DeserializeJson<GetTabDataVm>("GetTabDataVm");
-            this.DataContext = vm ?? new GetTabDataVm();
-    }
-    }
+  public GetTabData()
+  {
+    InitializeComponent();
+    var vm = IsolatedStorageHelper.DeserializeJson<GetTabDataVm>("GetTabDataVm");
+    this.DataContext = vm ?? new GetTabDataVm();
+  }
 }

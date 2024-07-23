@@ -5,15 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace ExcelTools.Wpf
+namespace ExcelTools.Wpf;
+
+public  class Tool
 {
-   public  class Tool
-    {
-      public string Name { get; set; }
+  public string Name { get; set; }
 
-      public Func<UserControl> ControlGenerator { get; set; }
+  public Func<UserControl> ControlGenerator { get; set; }
 
-      private UserControl? control;
-      public UserControl Control => control ??= ControlGenerator();
-  }
+  private UserControl? control;
+  public UserControl Control => control ??= ControlGenerator();
 }

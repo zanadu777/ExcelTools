@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ClosedXML.Excel;
+﻿using ClosedXML.Excel;
 
 namespace ExcelTools.Core.Extensions;
 
+// ReSharper disable once InconsistentNaming
 public static  class XLWorkbookExtensions
 {
 
@@ -61,6 +57,23 @@ public static  class XLWorkbookExtensions
     }
 
     return worksheetRowCounts;
+  }
+
+
+  public static XLWorkbook ExtractWorksheet(this XLWorkbook sourceWorkbook, string worksheetName)
+  {
+    var newWorkbook = new XLWorkbook();
+
+    var worksheet = sourceWorkbook.Worksheets.FirstOrDefault(ws => ws.Name == worksheetName);
+
+    if (worksheet != null)
+      worksheet.CopyTo(newWorkbook, worksheetName);
+    else
+    {
+      throw new Exception($"Worksheet '{worksheetName}' not found.");
+    }
+
+    return newWorkbook;
   }
 
 }

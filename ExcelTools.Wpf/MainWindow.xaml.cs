@@ -11,18 +11,17 @@ using System.Windows.Shapes;
 using ExcelTools.Wpf.Helpers;
 using ExcelTools.Wpf.Vms;
 
-namespace ExcelTools.Wpf
+namespace ExcelTools.Wpf;
+
+/// <summary>
+/// Interaction logic for MainWindow.xaml
+/// </summary>
+public partial class MainWindow : Window
 {
-  /// <summary>
-  /// Interaction logic for MainWindow.xaml
-  /// </summary>
-  public partial class MainWindow : Window
+  public MainWindow()
   {
-    public MainWindow()
-    {
-      InitializeComponent();
-      var mainWindowVm = IsolatedStorageHelper.DeserializeJson<MainWindowVm>("MainWindowVm");
-      this.DataContext = mainWindowVm ?? new MainWindowVm();
-    }
+    InitializeComponent();
+    var mainWindowVm = IsolatedStorageHelper.DeserializeJson<MainWindowVm>("MainWindowVm");
+    this.DataContext = mainWindowVm ?? new MainWindowVm();
   }
 }

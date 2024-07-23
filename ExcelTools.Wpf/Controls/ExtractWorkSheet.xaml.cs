@@ -18,14 +18,14 @@ using ExcelTools.Wpf.Vms;
 namespace ExcelTools.Wpf.Controls;
 
 /// <summary>
-/// Interaction logic for CombineTwoWorksheets.xaml
+/// Interaction logic for ExtractWorkSheet.xaml
 /// </summary>
-public partial class CombineTwoWorksheets : UserControl
+public partial class ExtractWorkSheet : UserControl
 {
-  public CombineTwoWorksheets()
+  public ExtractWorkSheet()
   {
     InitializeComponent();
-    var vm = IsolatedStorageHelper.DeserializeJson<CombineTwoWorksheetsVm>("CombineTwoWorksheetsVm");
-    this.DataContext = vm ?? new CombineTwoWorksheetsVm();
+    var vm = IsolatedStorageHelper.DeserializeJson<ExtractWorksheetVm>("ExtractWorksheetVm");
+    this.DataContext = vm ?? new ExtractWorksheetVm();
   }
 }
