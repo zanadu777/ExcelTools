@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ExcelTools.Wpf.Controls;
+namespace ExcelComparer.Wpf;
 
 /// <summary>
-/// Interaction logic for RenameTab.xaml
+/// Interaction logic for MainWindow.xaml
 /// </summary>
-public partial class RenameTab : UserControl
+public partial class MainWindow : Window
 {
-  public RenameTab()
+  public MainWindow()
   {
     InitializeComponent();
   }

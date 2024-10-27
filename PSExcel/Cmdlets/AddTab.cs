@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PSExcel.Cmdlets
+namespace PSExcel.Cmdlets;
+
+internal class AddTab
 {
-  internal class AddTab
-  {
-  }
 }

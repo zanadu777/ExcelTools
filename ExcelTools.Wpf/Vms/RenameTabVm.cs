@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExcelTools.Wpf.Vms
+namespace ExcelTools.Wpf.Vms;
+
+internal class RenameTabVm
 {
-  internal class RenameTabVm
-  {
-  }
 }
