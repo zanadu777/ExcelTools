@@ -119,6 +119,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\XLWorkbookExtensions.cs" />
+    <Compile Include="Extensions\XLWorkSheetExtensions.cs" />
     <Compile Include="WorkbookBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

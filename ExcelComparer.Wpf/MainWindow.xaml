@@ -5,8 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ExcelComparer.Wpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="Compare Excel Sheets" Height="750" Width="800">
+  <Window.DataContext>
+    <local:MainWindowVm/>
+  </Window.DataContext>
+  <DockPanel>
+     
+        <GroupBox Header="Sheet A" DockPanel.Dock="Top">
+          <local:ExcelSheet DataContext="{Binding SheetA}"/>
+        </GroupBox>
+
+    <GroupBox Header="Sheet B" DockPanel.Dock="Top">
+      <local:ExcelSheet DataContext="{Binding SheetB}"/>
+     </GroupBox>
+
+    <StackPanel Orientation="Horizontal"  DockPanel.Dock="Top" HorizontalAlignment="Right" Margin="4" >
+        <Button Height="23" Command="{Binding CompareExcelCommand}">Compare</Button>
+      </StackPanel>
+
+     <local:ExcelComparisonResult DataContext ="{Binding}">
+
+
+     </local:ExcelComparisonResult>
         
-    </Grid>
+    </DockPanel>
 </Window>

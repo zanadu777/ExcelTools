@@ -45,10 +45,12 @@
   <ItemGroup>
     <Compile Include="Comparers\DataTableComparer.cs" />
     <Compile Include="Comparers\KeyedComparer.cs" />
+    <Compile Include="DataTypes\ColumnStatistics.cs" />
     <Compile Include="DataTypes\ILabel.cs" />
     <Compile Include="DataTypes\KeyedComparisonResult.cs" />
     <Compile Include="DataTypes\Label.cs" />
     <Compile Include="DataTypes\Labeled.cs" />
+    <Compile Include="Extensions\DataTableExtensions.cs" />
     <Compile Include="Extensions\DictionaryExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
