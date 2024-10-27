@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using ClosedXML.Excel;
 
 namespace ExcelToolsFramework.Core.Extensions;
 
 // ReSharper disable once InconsistentNaming
-public static  class XLWorkbookExtensions
+public static class XLWorkbookExtensions
 {
 
   public static XLWorkbook Append(this XLWorkbook workbook1, XLWorkbook workbook2)
@@ -85,8 +86,23 @@ public static  class XLWorkbookExtensions
 
     if (worksheet != null)
       worksheet.Name = newTabName;
-    
+
     return workbook;
   }
 
+
+  public static DataTable ToDataTable(this XLWorkbook workbook, string worksheetName)
+  {
+    IXLWorksheet worksheet = workbook.Worksheets.FirstOrDefault(ws => ws.Name == worksheetName);
+    if (worksheet == null)
+    {
+      if (workbook.Worksheets.Count == 1)
+        worksheet = workbook.Worksheets.First();
+      else
+        throw new Exception($"Worksheet '{worksheetName}' not found and there are multiple sheets in the workbook.");
+    }
+
+    return worksheet.ToDataTable();
+  }
 }
+

@@ -1,16 +1,90 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using ClosedXML.Excel;
+
+using ExcelComparer.Wpf.Wpf;
+using ExcelToolsFramework.Core.Extensions;
+
 
 namespace ExcelComparer.Wpf;
 
-internal class MainWindowVm :INotifyPropertyChanged
+internal class MainWindowVm : INotifyPropertyChanged
 {
+  private ExcelWorksheet sheetA = new();
+  private ExcelWorksheet sheetB = new();
+  private XLWorkbook workbookA1;
+  private XLWorkbook workbookB1;
+
+  public event EventHandler Updated;
   public event PropertyChangedEventHandler PropertyChanged;
+
+  public ICommand CompareExcelCommand { get; set; }
+  public ICommand LoadExcelCommand { get; set; }
+
+  public MainWindowVm()
+  {
+    CompareExcelCommand = new DelegateCommand(OnCompareExcel);
+    LoadExcelCommand = new DelegateCommand(OnLoadExcel);
+  }
+
+  private void OnLoadExcel(object obj)
+  {
+    
+  }
+
+  private void OnCompareExcel(object obj)
+  {
+    Updated?.Invoke(this, EventArgs.Empty);
+    if (string.IsNullOrEmpty(SheetA.Path))
+      return;
+    if (string.IsNullOrEmpty(SheetB.Path))
+      return;
+
+    XLWorkbook workbookA = new XLWorkbook(SheetA.Path);
+    XLWorkbook workbookB = new XLWorkbook(SheetB.Path);
+
+    TableA = workbookA.ToDataTable(SheetA.SheetName);
+    TableB = workbookB.ToDataTable(SheetA.SheetName);
+
+  }
+
+
+
+  public ExcelWorksheet SheetA
+  {
+    get => sheetA;
+    set => SetField(ref sheetA, value);
+  }
+
+  public ExcelWorksheet SheetB
+  {
+    get => sheetB;
+    set => SetField(ref sheetB, value);
+  }
+
+  public XLWorkbook WorkbookA
+  {
+    get => workbookA1;
+    set => SetField(ref workbookA1, value);
+  }
+
+  public XLWorkbook WorkbookB
+  {
+    get => workbookB1;
+    set => SetField(ref workbookB1, value);
+  }
+
+
+  public DataTable TableA { get; set; }
+  public DataTable TableB { get; set; }
+
 
   protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
   {
