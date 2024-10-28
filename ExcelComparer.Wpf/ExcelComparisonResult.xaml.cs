@@ -15,13 +15,13 @@ using System.Windows.Shapes;
 
 namespace ExcelComparer.Wpf;
 
-/// <summary>
-/// Interaction logic for ExcelComparisonResult.xaml
-/// </summary>
-public partial class ExcelComparisonResult : UserControl
-{
-  public ExcelComparisonResult()
+  /// <summary>
+  /// Interaction logic for ExcelComparisonResult.xaml
+  /// </summary>
+  public partial class ExcelComparisonResult : UserControl
   {
-    InitializeComponent();
+    public ExcelComparisonResult()
+    {
+      InitializeComponent();
+    }
   }
-}

@@ -12,16 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
 namespace ExcelComparer.Wpf;
-
 /// <summary>
 /// Interaction logic for ExcelSheet.xaml
 /// </summary>
 public partial class ExcelSheet : UserControl
-{
-  public ExcelSheet()
   {
-    InitializeComponent();
+    public ExcelSheet()
+    {
+      InitializeComponent();
+    }
   }
-}
