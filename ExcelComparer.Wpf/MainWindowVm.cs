@@ -58,9 +58,12 @@ internal class MainWindowVm : INotifyPropertyChanged
     ColumnStatisticsA.Clear();
     foreach (var statistics in TableA.ColumnStatistics())
       ColumnStatisticsA.Add(statistics);
-     
+
+    var ColumnAHash = new HashSet<string>(ColumnStatisticsA.Where( x=> x.IsUnique).Select(x => x.Name));
+    var ColumnBHash = new HashSet<string>(ColumnStatisticsB.Where(x => x.IsUnique).Select(x => x.Name));
+
     ColumnPairsStatisticsA.Clear();
-    foreach (var statistics in TableA.ColumnPairStatistics())
+    foreach (var statistics in TableA.ColumnPairStatistics(ColumnAHash))
       ColumnPairsStatisticsA.Add(statistics);
 
     ColumnStatisticsB.Clear();
@@ -68,7 +71,7 @@ internal class MainWindowVm : INotifyPropertyChanged
       ColumnStatisticsB.Add(statistics);
 
     ColumnPairsStatisticsB.Clear();
-    foreach (var statistics in TableB.ColumnPairStatistics())
+    foreach (var statistics in TableB.ColumnPairStatistics(ColumnBHash))
       ColumnPairsStatisticsB.Add(statistics);
   }
 

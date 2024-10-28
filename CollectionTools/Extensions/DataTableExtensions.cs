@@ -95,9 +95,23 @@ public static class DataTableExtensions
   {
     var statistics = new List<ColumnStatistics>();
     for (int i = 0; i < dt.Columns.Count; i++)
-     for (int j = 0; j < dt.Columns.Count; j++)
-       if (i> j)
-         statistics.Add(dt.ColumnStatistics(dt.Columns[j], dt.Columns[i]));
+      for (int j = 0; j < dt.Columns.Count; j++)
+        if (i > j)
+          statistics.Add(dt.ColumnStatistics(dt.Columns[j], dt.Columns[i]));
+
+    return statistics;
+  }
+
+
+  public static List<ColumnStatistics> ColumnPairStatistics(this DataTable dt, HashSet<string> except)
+  {
+    var statistics = new List<ColumnStatistics>();
+    for (int i = 0; i < dt.Columns.Count; i++)
+      for (int j = 0; j < dt.Columns.Count; j++)
+        if (!except.Contains(dt.Columns[i].ColumnName))
+          if (!except.Contains(dt.Columns[j].ColumnName))
+            if (i > j)
+            statistics.Add(dt.ColumnStatistics(dt.Columns[j], dt.Columns[i]));
 
     return statistics;
   }

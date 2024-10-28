@@ -22,13 +22,14 @@
       </TabItem>
 
       <TabItem Header="Column Statistics A">
-        <StackPanel >
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+          <StackPanel >
           <TextBlock >Single Column Statistics</TextBlock>
           <DataGrid  ItemsSource="{Binding ColumnStatisticsA}"/>
           <TextBlock >Column Pair Statistics</TextBlock>
           <DataGrid  ItemsSource="{Binding ColumnPairsStatisticsA}"/>
         </StackPanel>
-
+        </ScrollViewer>
       </TabItem>
 
       <TabItem Header="Sheet B">
